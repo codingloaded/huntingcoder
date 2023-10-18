@@ -3,20 +3,20 @@ import styles from "@/styles/Bloglist.module.css";
 import Link from 'next/link';
 
 
-const Blog = (props) => {
-  console.log(props)
-  const [blog, setBlog] = useState(props.blogitems);
-  // useEffect(()=>{
-  //   // console.log("allright");
-  // fetch('http://localhost:3000/api/blog').then((data)=>{
-  //   return data.json();
-  // }).then((blogs)=>{
-  //   // console.log(blogs);
-  //   setBlog(blogs);
-  //   // console.log("done");
-  // })
+const Blog = () => {
+  // console.log(props)
+  const [blog, setBlog] = useState([]);
+  useEffect(()=>{
+    // console.log("allright");
+  fetch('http://localhost:3000/api/blog').then((data)=>{
+    return data.json();
+  }).then((blogs)=>{
+    // console.log(blogs);
+    setBlog(blogs);
+    // console.log("done");
+  })
    
-  // },[])
+  },[])
   return <div>
     <main className={styles.main}>
       {blog.map((blogitems)=>{
@@ -32,14 +32,14 @@ const Blog = (props) => {
   </div>;
 };
 
-export async function getServerSideProps(context){
-   let data = await fetch('http://localhost:3000/api/blog');
-  let blogitems = await data.json();
+// export async function getServerSideProps(context){
+//    let data = await fetch('http://localhost:3000/api/blog');
+//   let blogitems = await data.json();
 
  
-  return {
-    props :{blogitems}
-  }
-}
+//   return {
+//     props :{blogitems}
+//   }
+// }
 
 export default Blog;
