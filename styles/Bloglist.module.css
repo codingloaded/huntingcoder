@@ -1,0 +1,17 @@
+.main {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 3rem;
+    min-height: 100vh;
+    
+  }
+
+.blogitem{
+    /* border: 2px solid green; */
+    margin: 15px;
+}
+.blogitem h3{
+  text-align: center;
+}
