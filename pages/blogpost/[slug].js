@@ -3,6 +3,9 @@ import { useRouter } from 'next/router';
 import styles from "@/styles/Slug.module.css";
 
 const slug = (props) => {
+  function createMarkup(c) {
+    return {__html: c};
+  }
   const [blog, setBlog] = useState(props.blog);
   // const router = useRouter();
   // useEffect(()=>{
@@ -23,7 +26,7 @@ const slug = (props) => {
         <h1>{blog && blog.title}</h1>
         <hr />
         <div className = {styles.content}>
-          {blog && blog.content}
+          {blog && <div dangerouslySetInnerHTML={createMarkup(blog.content)}></div>}
         </div>
       </main >
     </div>
